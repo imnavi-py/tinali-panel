@@ -23,6 +23,20 @@ class _OrderTrackingPageState extends State<OrderTrackingPage>
     _tabController = TabController(length: 3, vsync: this);
 
     fetchOrderDetails('42');
+    _invoices = fetchInvoices();
+  }
+
+  Future<List<Invoice>> fetchInvoices() async {
+    final response = await http.get(Uri.parse(
+        'https://test.ht-hermes.com/users/customers/pre_invoices.php?order_id=53'));
+
+    if (response.statusCode == 200) {
+      List<dynamic> jsonResponse = json.decode(response.body);
+      print(jsonResponse);
+      return jsonResponse.map((data) => Invoice.fromJson(data)).toList();
+    } else {
+      throw Exception('Failed to load invoices');
+    }
   }
 
   @override
@@ -32,10 +46,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage>
   }
 
   checkInvoice() {
-    if (UserInfoControll.status.value == 1 ) {
-      
-    }
-
+    if (UserInfoControll.status.value == 1) {}
   }
 
   final List<int> steps = [UserInfoControll.status.value - 1, 1, 3, 4, 2, 1];
@@ -108,6 +119,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage>
   // }
 
   // int orderProgress = 0;
+  late Future<List<Invoice>> _invoices;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -625,6 +637,83 @@ class _OrderTrackingPageState extends State<OrderTrackingPage>
           ),
         ],
       ),
+    );
+  }
+}
+
+class Invoice {
+  final String invoiceId;
+  final String invoiceNumber;
+  final String orderId;
+  final Map<String, dynamic> customerInfo;
+  final String economicCode;
+  final String product;
+  final String fee;
+  final String weight;
+  final String branch;
+  final String? thickness;
+  final String? width;
+  final String size;
+  final String grade;
+  final String howPay;
+  final String untilPay;
+  final String orderDate;
+  final String ontax;
+  final String profitMonth;
+  final String operatorName;
+  final String createdAt;
+  final String price;
+  final String orderType;
+
+  Invoice({
+    required this.invoiceId,
+    required this.invoiceNumber,
+    required this.orderId,
+    required this.customerInfo,
+    required this.economicCode,
+    required this.product,
+    required this.fee,
+    required this.weight,
+    required this.branch,
+    this.thickness,
+    this.width,
+    required this.size,
+    required this.grade,
+    required this.howPay,
+    required this.untilPay,
+    required this.orderDate,
+    required this.ontax,
+    required this.profitMonth,
+    required this.operatorName,
+    required this.createdAt,
+    required this.price,
+    required this.orderType,
+  });
+
+  factory Invoice.fromJson(Map<String, dynamic> json) {
+    return Invoice(
+      invoiceId: json['invoice_id'],
+      invoiceNumber: json['invoice_number'],
+      orderId: json['order_id'],
+      customerInfo: jsonDecode(json['customer_info']),
+      economicCode: json['economic_code'],
+      product: json['product'],
+      fee: json['fee'],
+      weight: json['weight'],
+      branch: json['branch'],
+      thickness: json['thickness'],
+      width: json['width'],
+      size: json['size'],
+      grade: json['grade'],
+      howPay: json['how_pay'],
+      untilPay: json['until_pay'],
+      orderDate: json['order_date'],
+      ontax: json['ontax'],
+      profitMonth: json['profit_month'],
+      operatorName: json['operator_name'],
+      createdAt: json['created_at'],
+      price: json['price'],
+      orderType: json['order_type'],
     );
   }
 }
