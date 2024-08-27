@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -280,24 +281,6 @@ class _OrdersListViewState<T> extends State<OrdersListView<T>> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 12.0),
-            child: SearchBarAnimation(
-              isOriginalAnimation: false,
-              textEditingController: searchController,
-              buttonWidget: Icon(
-                Icons.search,
-                color: Colors.blue.shade300,
-              ),
-              secondaryButtonWidget: const Icon(Icons.close),
-              trailingWidget: const Icon(Icons.search_rounded),
-              buttonShadowColour: Colors.black26,
-              buttonBorderColour: Colors.black26,
-              onFieldSubmitted: (String text) {
-                // Handle search
-              },
-            ),
-          ),
           Row(
             children: [
               IconButton(
@@ -360,6 +343,26 @@ class _OrdersListViewState<T> extends State<OrdersListView<T>> {
                 ),
               ),
             ],
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 12.0),
+              child: SearchBarAnimation(
+                isOriginalAnimation: false,
+                textEditingController: searchController,
+                buttonWidget: Icon(
+                  Icons.search,
+                  color: Colors.blue.shade300,
+                ),
+                secondaryButtonWidget: const Icon(Icons.close),
+                trailingWidget: const Icon(Icons.search_rounded),
+                buttonShadowColour: Colors.black26,
+                buttonBorderColour: Colors.black26,
+                onFieldSubmitted: (String text) {
+                  // Handle search
+                },
+              ),
+            ),
           ),
         ],
       ),

@@ -353,6 +353,49 @@ class _LoginPageSkState extends State<LoginPageSk> {
         // });
         // print(jsonDecode(response.body)['base64_image']);
 
+        int checkOrderId = jsonDecode(response.body)['order_id'] ?? 0;
+        checkOrderId.toString();
+        if (response0['userType'] == 'confirmed_customers') {
+          print('yes');
+          if (checkOrderId != 0 || checkOrderId != null) {
+            final response = await http.get(Uri.parse(
+                'https://test.ht-hermes.com/orders/read-order.php?order_id=${checkOrderId}'));
+
+            if (response.statusCode == 200) {
+              print('object');
+              print(jsonDecode(response.body));
+
+              List<dynamic> responseData = jsonDecode(response.body);
+
+              // دسترسی به اولین عنصر لیست و سپس دسترسی به کلید `status`
+              int status = responseData[0]['status'];
+              String product = responseData[0]['product'];
+              String weight = responseData[0]['weight'];
+              String grade = responseData[0]['grade'];
+              UserInfoControll.items.clear();
+              UserInfoControll.items.add(product);
+              UserInfoControll.items.add(weight);
+              UserInfoControll.items.add(grade);
+              print(UserInfoControll.items);
+
+              print('Status: $status');
+              UserInfoControll.status.value = status;
+
+              setState(() {});
+
+              print(' yes $status');
+              // print(status.toString());
+
+              setState(() {});
+            } else {
+              throw Exception('Failed to load sell orders');
+            }
+          }
+        }
+        void refresh() {
+          setState(() {});
+        }
+
         refresh();
         print('ine dg ${UserInfoControll.userType.value}');
         Navigator.pushReplacement(context, MaterialPageRoute(

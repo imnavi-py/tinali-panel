@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:searchbar_animation/searchbar_animation.dart';
@@ -8,7 +9,10 @@ import 'package:sidebarx/sidebarx.dart';
 import 'package:steelpanel/api/config.dart';
 import 'package:steelpanel/models/factor-model.dart';
 import 'package:steelpanel/models/invoice-model.dart';
+import 'package:steelpanel/models/prinffc.dart';
+import 'package:steelpanel/models/print-model-factore.dart';
 import 'package:steelpanel/screens/homescreen.dart';
+import 'package:steelpanel/screens/pages/home.dart';
 import 'package:steelpanel/screens/pages/invoice-card.dart';
 
 class InvoicesPage extends StatefulWidget {
@@ -140,9 +144,9 @@ class _InvoicesPageState extends State<InvoicesPage>
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: screenWidth > 0 && screenWidth < 850
                               ? 1
-                              : screenWidth > 850 && screenWidth < 1360
+                              : screenWidth > 850 && screenWidth < 1900
                                   ? 2
-                                  : screenWidth > 1360 && screenWidth < 1900
+                                  : screenWidth > 2400 && screenWidth < 3000
                                       ? 3
                                       : 4),
                       itemCount: snapshot.data!.length,
@@ -161,9 +165,9 @@ class _InvoicesPageState extends State<InvoicesPage>
                                   children: [
                                     factorindex1(
                                       txt_left1: invoice.createdAt,
-                                      txt_right1: ' : تاریخ',
+                                      txt_right1: 'تاریخ : ',
                                       txt_left2: invoice.invoiceNumber,
-                                      txt_right2: ' : شماره فاکتور',
+                                      txt_right2: 'شماره فاکتور : ',
                                     ),
 
                                     //
@@ -172,16 +176,16 @@ class _InvoicesPageState extends State<InvoicesPage>
                                         padding: const EdgeInsets.all(16.0),
                                         child: factorindex1(
                                             txt_left1: invoice.customerId,
-                                            txt_right1: ': آیدی کاربری',
+                                            txt_right1: 'آیدی کاربری : ',
                                             txt_left2:
                                                 'آقای ${invoice.responsibleName} ',
-                                            txt_right2: ':نام')),
+                                            txt_right2: 'نام : ')),
                                     factorindex1(
                                         txt_left1: invoice
                                             .customerInfo.registrationNumber,
-                                        txt_right1: ': شماره ثبت',
+                                        txt_right1: 'شماره ثبت : ',
                                         txt_left2: invoice.economicCode,
-                                        txt_right2: ': کد اقتصادی'),
+                                        txt_right2: 'کد اقتصادی : '),
                                     Padding(
                                       padding: const EdgeInsets.all(20.0),
                                       child: Row(
@@ -190,6 +194,9 @@ class _InvoicesPageState extends State<InvoicesPage>
                                         children: [
                                           Row(
                                             children: [
+                                              Container(
+                                                child: const Text('پرداخت : '),
+                                              ),
                                               Container(
                                                 width: 50,
                                                 height: 40,
@@ -207,13 +214,17 @@ class _InvoicesPageState extends State<InvoicesPage>
                                                       fontSize: 12),
                                                 ),
                                               ),
-                                              Container(
-                                                child: const Text(': پرداخت '),
-                                              ),
                                             ],
                                           ),
                                           Row(
                                             children: [
+                                              Container(
+                                                child: const Text(
+                                                  'نوع سفارش : ',
+                                                  style: TextStyle(
+                                                      color: Colors.amber),
+                                                ),
+                                              ),
                                               Container(
                                                 width: 50,
                                                 height: 40,
@@ -232,10 +243,6 @@ class _InvoicesPageState extends State<InvoicesPage>
                                                       color: Colors.white,
                                                       fontSize: 12),
                                                 ),
-                                              ),
-                                              Container(
-                                                child:
-                                                    const Text(': نوع سفارش'),
                                               ),
                                             ],
                                           )
@@ -285,16 +292,17 @@ class _InvoicesPageState extends State<InvoicesPage>
                                                             txt_right2:
                                                                 ' : نام شرکت'),
                                                         factorindex1(
-                                                            txt_left1: invoice
-                                                                .customerInfo
-                                                                .registrationNumber,
-                                                            txt_right1:
-                                                                ' : شماره ثبت',
-                                                            txt_left2: invoice
-                                                                .customerInfo
-                                                                .economicCode,
-                                                            txt_right2:
-                                                                ' : کد اقتصادی'),
+                                                          txt_right1:
+                                                              ' : شماره ثبت',
+                                                          txt_left1: invoice
+                                                              .customerInfo
+                                                              .registrationNumber,
+                                                          txt_right2:
+                                                              ' : کد اقتصادی',
+                                                          txt_left2: invoice
+                                                              .customerInfo
+                                                              .economicCode,
+                                                        ),
                                                         factorindex1(
                                                             txt_left1: invoice
                                                                 .customerInfo
@@ -465,18 +473,6 @@ class _InvoicesPageState extends State<InvoicesPage>
                                           MainAxisAlignment.spaceAround,
                                       children: [
                                         Container(
-                                          child: Text(
-                                            invoice.status == 'Pending'
-                                                ? 'در انتظار تایید'
-                                                : 'تایید شده',
-                                            style: const TextStyle(
-                                                fontFamily: 'Irs',
-                                                fontSize: 15,
-                                                color: Colors.orange,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                        Container(
                                           decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(10),
@@ -488,13 +484,25 @@ class _InvoicesPageState extends State<InvoicesPage>
                                                     spreadRadius: 2)
                                               ]),
                                           child: Text(
-                                            ' : وضعیت فاکتور',
+                                            ' وضعیت فاکتور : ',
                                             style: TextStyle(
                                                 fontFamily: 'Irs',
                                                 fontSize: 15,
                                                 color: Colors.grey.shade100),
                                           ),
-                                        )
+                                        ),
+                                        Container(
+                                          child: Text(
+                                            invoice.status == 'Pending'
+                                                ? 'در انتظار تایید'
+                                                : 'تایید شده',
+                                            style: const TextStyle(
+                                                fontFamily: 'Irs',
+                                                fontSize: 15,
+                                                color: Colors.orange,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
                                       ],
                                     ),
 
@@ -573,21 +581,26 @@ class _InvoicesPageState extends State<InvoicesPage>
                                         const SizedBox(
                                           width: 10,
                                         ),
-                                        Container(
-                                          height: 25,
-                                          width: 120,
-                                          decoration: BoxDecoration(
-                                              color: Colors.blue,
-                                              borderRadius:
-                                                  BorderRadius.circular(8)),
-                                          alignment: Alignment.center,
-                                          child: const Text(
-                                            'پرینت فاکتور',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontFamily: 'Irs',
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold),
+                                        InkWell(
+                                          onTap: () {
+                                            Get.to(PrintableFactor());
+                                          },
+                                          child: Container(
+                                            height: 25,
+                                            width: 120,
+                                            decoration: BoxDecoration(
+                                                color: Colors.blue,
+                                                borderRadius:
+                                                    BorderRadius.circular(8)),
+                                            alignment: Alignment.center,
+                                            child: const Text(
+                                              'پرینت فاکتور',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontFamily: 'Irs',
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -607,70 +620,104 @@ class _InvoicesPageState extends State<InvoicesPage>
   }
 
   Widget headerWidget(int invoices) {
-    return Container(
-      color: Colors.white,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 12.0),
-            child: SearchBarAnimation(
-              isOriginalAnimation: false,
-              textEditingController: searchController,
-              buttonWidget: Icon(
-                Icons.search,
-                color: Colors.blue.shade300,
-              ),
-              secondaryButtonWidget: const Icon(Icons.close),
-              trailingWidget: const Icon(Icons.search_rounded),
-              buttonShadowColour: Colors.black26,
-              buttonBorderColour: Colors.black26,
-              onFieldSubmitted: (String text) {
-                // Handle search
-              },
-            ),
-          ),
-          Row(
-            children: [
-              IconButton(
-                  onPressed: () {
-                    Get.to(HomePage(
-                      controller:
-                          SidebarXController(selectedIndex: 0, extended: true),
-                    ));
-                  },
-                  icon: const Icon(
-                    Icons.home,
-                    color: Colors.black,
-                  )),
-              Container(
-                width: 40,
-                height: 25,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade900,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Text(
-                  invoices.toString(),
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(right: 12.0),
-                child: Text(
-                  'تعداد فاکتورها',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontFamily: 'BYekan',
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Container(
+        color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                IconButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(
+                        builder: (context) {
+                          return HomeMain(
+                            xxcontroller: SidebarXController(
+                                selectedIndex: 0, extended: false),
+                          );
+                        },
+                      ));
+                    },
+                    icon: const Icon(
+                      Icons.home,
+                      color: Colors.black,
+                    )),
+                const Padding(
+                  padding: EdgeInsets.only(right: 12.0),
+                  child: Text(
+                    'تعداد فاکتورها : ',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontFamily: 'BYekan',
+                    ),
                   ),
                 ),
+                Container(
+                  width: 40,
+                  height: 25,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade900,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Text(
+                    invoices.toString(),
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(right: 12.0),
+                  child: Text(
+                    'آماده به فاکتور : ',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontFamily: 'BYekan',
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 40,
+                  height: 25,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade900,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Text(
+                    '2',
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: SearchBarAnimation(
+                  isOriginalAnimation: false,
+                  textEditingController: searchController,
+                  buttonWidget: Icon(
+                    Icons.search,
+                    color: Colors.blue.shade300,
+                  ),
+                  secondaryButtonWidget: const Icon(Icons.close),
+                  trailingWidget: const Icon(Icons.search_rounded),
+                  buttonShadowColour: Colors.black26,
+                  buttonBorderColour: Colors.black26,
+                  onFieldSubmitted: (String text) {
+                    // Handle search
+                  },
+                ),
               ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -700,10 +747,10 @@ class factorindex1 extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  child: Text(txt_left1),
+                  child: Text(txt_right1),
                 ),
                 Container(
-                  child: Text(txt_right1),
+                  child: Text(txt_left1),
                 ),
               ],
             ),
@@ -712,10 +759,10 @@ class factorindex1 extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  child: Text(txt_left2),
+                  child: Text(txt_right2),
                 ),
                 Container(
-                  child: Text(txt_right2),
+                  child: Text(txt_left2),
                 ),
               ],
             ),

@@ -45,12 +45,17 @@ class _IndentityPendingState extends State<IndentityPending> {
                       children: [
                         Text(
                           UserInfoControll.first_name.value,
-                          style: TextStyle(color: Colors.orange),
+                          style: const TextStyle(color: Colors.orange),
                         ),
-                        Text(
-                          ' عزیز اطلاعات شما در حال پردازش است',
-                          style: TextStyle(color: Colors.white),
-                        ),
+                        UserInfoControll.verify.value == false
+                            ? const Text(
+                                ' عزیز اطلاعات شما در حال پردازش است',
+                                style: TextStyle(color: Colors.white),
+                              )
+                            : const Text(
+                                ' عزیز اطلاعات شما تایید شده است',
+                                style: TextStyle(color: Colors.white),
+                              ),
                       ],
                     ),
                   )),

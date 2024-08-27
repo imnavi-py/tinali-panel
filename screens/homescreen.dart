@@ -195,210 +195,219 @@ class _HomePageState extends State<HomePage> {
     // print('inam az in : ${UserInfoControll.user_avatar}');
     return Scaffold(
       key: _scaffoldKey,
-      endDrawer: Drawer(
-        backgroundColor: const Color.fromARGB(255, 226, 219, 219),
-        child: Container(
-          color: const Color.fromARGB(255, 226, 219, 219),
-          child: ListView(
-            children: [
-              ListTile(
-                onTap: () {
-                  // check_void.servicedialog();
-                  showModalBottomSheet(
-                    showDragHandle: true,
-                    enableDrag: true,
-                    backgroundColor: const Color.fromARGB(255, 226, 219, 219),
-                    context: context,
-                    builder: (context) {
-                      return Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: 300,
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Expanded(child: Container()),
-                                  Expanded(
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            SizedBox(
-                                              width: 130,
-                                              height: 30,
-                                              child: TextField(
-                                                keyboardType:
-                                                    TextInputType.number,
-                                                style: const TextStyle(
-                                                    height: 0.5),
-                                                controller: ironfee,
-                                                decoration: InputDecoration(
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide:
-                                                          const BorderSide(
-                                                              color:
-                                                                  Colors.blue,
-                                                              width: 3),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                    ),
-                                                    hoverColor: Colors.blue,
-                                                    border: OutlineInputBorder(
-                                                      borderSide:
-                                                          const BorderSide(
-                                                              color:
-                                                                  Colors.red),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                        10,
-                                                      ),
-                                                    )),
-                                              ),
-                                            ),
-                                            Container(
-                                              child: const Text(
-                                                  '  : تعیین قیمت آهن'),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            SizedBox(
-                                              width: 130,
-                                              height: 30,
-                                              child: TextField(
-                                                keyboardType:
-                                                    TextInputType.number,
-                                                style: const TextStyle(
-                                                    height: 0.5),
-                                                // controller: ironfee,
-                                                decoration: InputDecoration(
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide:
-                                                          const BorderSide(
-                                                              color:
-                                                                  Colors.blue,
-                                                              width: 3),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                    ),
-                                                    hoverColor: Colors.blue,
-                                                    border: OutlineInputBorder(
-                                                      borderSide:
-                                                          const BorderSide(
-                                                              color:
-                                                                  Colors.red),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                        10,
-                                                      ),
-                                                    )),
-                                              ),
-                                            ),
-                                            Container(
-                                              child: const Text(
-                                                  '  : تعیین حداکثر سطح'),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Container(
-                                              child: ElevatedButton(
-                                                  onPressed: () {
-                                                    Get.to(GradeList());
-                                                  },
-                                                  child: const Text(
-                                                      'مدیریت گرید ها')),
-                                            ),
-                                            Container(
-                                              alignment: Alignment.centerRight,
-                                              child: ElevatedButton(
-                                                  onPressed: () {
-                                                    Get.to(
-                                                        ConfirmedSuppliersPage());
-                                                  },
-                                                  child: const Text(
-                                                      'لیست تامین کنندگان')),
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 100,
-                              ),
-                              Center(
-                                child: ElevatedButton(
-                                    onPressed: () {
-                                      if (ironfee.text != '') {
-                                        CurrencyController.iron.value =
-                                            ironfee.text;
-                                        setState(() {});
-
-                                        Get.off(HomePage(
-                                          controller: SidebarXController(
-                                              selectedIndex: 0),
-                                        ));
-                                        Navigator.of(context).pop();
-                                        Navigator.of(context).pop();
-                                      }
-                                    },
-                                    child: const Text('ثبت')),
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                },
-                tileColor: Colors.white,
-                splashColor: Colors.amber,
-                trailing: const Icon(Icons.settings),
-                title: const Text('تنظیمات'),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.back();
-                  Get.defaultDialog(
-                      title: 'کاربر جدید',
-                      titleStyle: const TextStyle(fontFamily: 'BYekan'),
+      endDrawer: Visibility(
+        visible: UserInfoControll.userType.value == 'Admin' ? true : false,
+        child: Drawer(
+          backgroundColor: const Color.fromARGB(255, 226, 219, 219),
+          child: Container(
+            color: const Color.fromARGB(255, 226, 219, 219),
+            child: ListView(
+              children: [
+                ListTile(
+                  onTap: () {
+                    // check_void.servicedialog();
+                    showModalBottomSheet(
+                      showDragHandle: true,
+                      enableDrag: true,
                       backgroundColor: const Color.fromARGB(255, 226, 219, 219),
-                      content: const Addunituser());
-                },
-                trailing: const Icon(Icons.person),
-                title: const Text('اضافه کردن کاربر'),
-              ),
-              const ListTile(
-                trailing: Icon(Icons.file_copy),
-                title: Text('فایل های خروجی'),
-              ),
-              const ListTile(
-                trailing: Icon(Icons.chat),
-                title: Text('گفتوگو'),
-              ),
-              ListTile(
-                onTap: () {
-                  Get.to(const UsersConfig());
-                },
-                trailing: const Icon(Icons.manage_accounts),
-                title: const Text('مدیریت کاربران'),
-              ),
-            ],
+                      context: context,
+                      builder: (context) {
+                        return Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: SizedBox(
+                            width: double.infinity,
+                            height: 300,
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Expanded(child: Container()),
+                                    Expanded(
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              SizedBox(
+                                                width: 130,
+                                                height: 30,
+                                                child: TextField(
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  style: const TextStyle(
+                                                      height: 0.5),
+                                                  controller: ironfee,
+                                                  decoration: InputDecoration(
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                                color:
+                                                                    Colors.blue,
+                                                                width: 3),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                      ),
+                                                      hoverColor: Colors.blue,
+                                                      border:
+                                                          OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                                color:
+                                                                    Colors.red),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          10,
+                                                        ),
+                                                      )),
+                                                ),
+                                              ),
+                                              Container(
+                                                child: const Text(
+                                                    '  : تعیین قیمت آهن'),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              SizedBox(
+                                                width: 130,
+                                                height: 30,
+                                                child: TextField(
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  style: const TextStyle(
+                                                      height: 0.5),
+                                                  // controller: ironfee,
+                                                  decoration: InputDecoration(
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                                color:
+                                                                    Colors.blue,
+                                                                width: 3),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10),
+                                                      ),
+                                                      hoverColor: Colors.blue,
+                                                      border:
+                                                          OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                                color:
+                                                                    Colors.red),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          10,
+                                                        ),
+                                                      )),
+                                                ),
+                                              ),
+                                              Container(
+                                                child: const Text(
+                                                    '  : تعیین حداکثر سطح'),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Container(
+                                                child: ElevatedButton(
+                                                    onPressed: () {
+                                                      Get.to(GradeList());
+                                                    },
+                                                    child: const Text(
+                                                        'مدیریت گرید ها')),
+                                              ),
+                                              Container(
+                                                alignment:
+                                                    Alignment.centerRight,
+                                                child: ElevatedButton(
+                                                    onPressed: () {
+                                                      Get.to(
+                                                          ConfirmedSuppliersPage());
+                                                    },
+                                                    child: const Text(
+                                                        'لیست تامین کنندگان')),
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 100,
+                                ),
+                                Center(
+                                  child: ElevatedButton(
+                                      onPressed: () {
+                                        if (ironfee.text != '') {
+                                          CurrencyController.iron.value =
+                                              ironfee.text;
+                                          setState(() {});
+
+                                          Get.off(HomePage(
+                                            controller: SidebarXController(
+                                                selectedIndex: 0),
+                                          ));
+                                          Navigator.of(context).pop();
+                                          Navigator.of(context).pop();
+                                        }
+                                      },
+                                      child: const Text('ثبت')),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  tileColor: Colors.white,
+                  splashColor: Colors.amber,
+                  trailing: const Icon(Icons.settings),
+                  title: const Text('تنظیمات'),
+                ),
+                ListTile(
+                  onTap: () {
+                    Get.back();
+                    Get.defaultDialog(
+                        title: 'کاربر جدید',
+                        titleStyle: const TextStyle(fontFamily: 'BYekan'),
+                        backgroundColor:
+                            const Color.fromARGB(255, 226, 219, 219),
+                        content: const Addunituser());
+                  },
+                  trailing: const Icon(Icons.person),
+                  title: const Text('اضافه کردن کاربر'),
+                ),
+                const ListTile(
+                  trailing: Icon(Icons.file_copy),
+                  title: Text('فایل های خروجی'),
+                ),
+                const ListTile(
+                  trailing: Icon(Icons.chat),
+                  title: Text('گفتوگو'),
+                ),
+                ListTile(
+                  onTap: () {
+                    Get.to(const UsersConfig());
+                  },
+                  trailing: const Icon(Icons.manage_accounts),
+                  title: const Text('مدیریت کاربران'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -811,14 +820,17 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                Expanded(
-                    flex: 1,
-                    child: EndDrawerButton(
-                      onPressed: () {
-                        // openDrawer();
-                        _scaffoldKey.currentState!.openEndDrawer();
-                      },
-                    )),
+                Visibility(
+                  visible: UserInfoControll.userType == 'Admin' ? true : false,
+                  child: Expanded(
+                      flex: 1,
+                      child: EndDrawerButton(
+                        onPressed: () {
+                          // openDrawer();
+                          _scaffoldKey.currentState!.openEndDrawer();
+                        },
+                      )),
+                ),
               ],
             ),
             SizedBox(
