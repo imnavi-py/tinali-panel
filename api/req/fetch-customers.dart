@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:steelpanel/screens/pages/customers.dart';
 import 'package:steelpanel/screens/pages/customers_controller.dart';
 
 final CustomersController controller = Get.put(CustomersController());

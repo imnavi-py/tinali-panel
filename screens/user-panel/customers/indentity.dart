@@ -500,7 +500,7 @@ class _IndentityPageState extends State<IndentityPage> {
       barrierDismissible: false,
     );
     int intid = UserInfoControll.user_id.value;
-    print('innnnnnnnnnnnnnnnn : ${intid}');
+    print('innnnnnnnnnnnnnnnn : $intid');
     try {
       print(UserInfoControll.user_id.value);
       var response = await http.post(

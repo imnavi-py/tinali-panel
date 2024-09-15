@@ -310,7 +310,7 @@ class _OrdersListViewState<T> extends State<OrdersListView<T>> {
               ),
               IconButton(
                 onPressed: () {
-                  Get.to(ProductSelectionPage());
+                  Get.to(const ProductSelectionPage());
                 },
                 icon: const Icon(
                   Icons.settings,

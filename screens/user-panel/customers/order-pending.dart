@@ -23,7 +23,7 @@ class _OrderPendingState extends State<OrderPending> {
   @override
   Widget build(BuildContext context) {
     print(UserInfoControll.first_name.value);
-    return Container(
+    return SizedBox(
       width: screenWidth,
       height: screenHeight,
       child: Column(
@@ -45,7 +45,7 @@ class _OrderPendingState extends State<OrderPending> {
                       children: [
                         Text(
                           UserInfoControll.first_name.value,
-                          style: TextStyle(color: Colors.orange),
+                          style: const TextStyle(color: Colors.orange),
                         ),
                         const Text(
                           'ابتدا احراز هویت را کامل کنید ویا در صورت انجام احراز هویت ، برای تایید  منتظر بمانید',

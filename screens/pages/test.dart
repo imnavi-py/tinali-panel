@@ -1,16 +1,12 @@
 import 'dart:convert';
-import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:sidebarx/sidebarx.dart';
 import 'package:steelpanel/screens/homescreen.dart';
 import 'package:steelpanel/screens/pages/customers_controller.dart';
-import 'package:steelpanel/api/req/delete-customer.dart';
 import 'package:steelpanel/widgets/bottombutton.dart';
 import 'package:steelpanel/widgets/newuser_textfield.dart';
-import 'package:universal_html/html.dart' as html;
-import 'package:persian_tools/persian_tools.dart';
 
 final CustomersController controller = Get.put(CustomersController());
 const String url = 'https://test.ht-hermes.com/customers/readcustomer.php';

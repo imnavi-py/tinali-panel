@@ -104,7 +104,7 @@ class _HomeMainState extends State<HomeMain> {
 }
 
 class ExampleSidebarX extends StatefulWidget {
-  ExampleSidebarX({
+  const ExampleSidebarX({
     Key? key,
     required SidebarXController controller,
   })  : _controller = controller,
@@ -504,7 +504,7 @@ class _ScreensExampleState extends State<_ScreensExample> {
               if (UserInfoControll.verify.value == true) {
                 return OrdersCustomers(refresh: refresh);
               } else {
-                return OrderPending();
+                return const OrderPending();
               }
 
               // return showPass();
@@ -512,7 +512,7 @@ class _ScreensExampleState extends State<_ScreensExample> {
               return const CustomersPage();
             } else {
               // در صورتی که نوع کاربر مشخص نشده باشد یا مقدار نامعتبر باشد
-              return CustomersPage();
+              return const CustomersPage();
             }
           case 2:
             if (UserInfoControll.userType.value == 'Admin') {
@@ -520,17 +520,17 @@ class _ScreensExampleState extends State<_ScreensExample> {
                 refresh: refresh,
               );
             } else if (UserInfoControll.userType.value == 'operator') {
-              return CustomersPage();
+              return const CustomersPage();
             } else if (UserInfoControll.userType.value == 'Commerce') {
-              return CustomersPage();
+              return const CustomersPage();
             } else if (UserInfoControll.userType.value == 'Customers' ||
                 UserInfoControll.userType.value == 'confirmed_customers') {
               return OrderTrackingPage();
             } else if (UserInfoControll.userType.value == 'seller') {
-              return CustomersPage();
+              return const CustomersPage();
             } else {
               // در صورتی که نوع کاربر مشخص نشده باشد یا مقدار نامعتبر باشد
-              return CustomersPage();
+              return const CustomersPage();
             }
 
           case 3:
@@ -548,7 +548,7 @@ class _ScreensExampleState extends State<_ScreensExample> {
               print(UserInfoControll.takeData.value);
               return UserInfoControll.takeData.value == 0
                   ? const IndentityPage()
-                  : IndentityPending();
+                  : const IndentityPending();
             } else if (UserInfoControll.userType.value == 'seller') {
               return const IndentityPage();
             } else {

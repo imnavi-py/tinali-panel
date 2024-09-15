@@ -1,25 +1,14 @@
 import 'dart:convert';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:get/get.dart';
 import 'package:motion_toast/motion_toast.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'package:steelpanel/api/add-log.dart';
-import 'package:steelpanel/api/userupdate.dart';
-import 'package:steelpanel/login/testlocal.dart';
-import 'package:steelpanel/login/token.dart';
 import 'package:http/http.dart' as http;
-import 'package:steelpanel/screens/homescreen.dart';
-import 'package:steelpanel/screens/pages/customers.dart';
 import 'package:steelpanel/screens/pages/home.dart';
-import 'package:steelpanel/screens/pages/logs.dart';
-import 'package:steelpanel/screens/pages/suppliers.dart';
 import 'package:steelpanel/screens/user-panel/customers/add-order-customer.dart';
-import 'package:steelpanel/widgets/mytextfield.dart';
 import '../../../control/user-info.dart';
-import '../../../models/currency-model.dart';
 
 import 'dart:html' as html;
 

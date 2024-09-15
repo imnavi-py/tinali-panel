@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:steelpanel/api/config.dart';
 import 'package:http/http.dart' as http;
 import 'package:steelpanel/control/user-info.dart';
-import 'package:universal_html/html.dart' as html;
 
 Future<void> tokenCheck() async {
   var url = Uri.parse('${apiService.apiurl}/ctoken.php/');

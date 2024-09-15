@@ -1,18 +1,14 @@
 import 'dart:convert';
 import 'package:csv/csv.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:sidebarx/sidebarx.dart';
 import 'package:steelpanel/api/add-log.dart';
 import 'package:steelpanel/api/config.dart';
-import 'package:steelpanel/api/req/confirmed-customers-create.dart';
 import 'package:steelpanel/api/req/delete-confirmed-customers.dart';
 import 'package:steelpanel/api/req/make-confirmed.dart';
 import 'package:steelpanel/control/user-info.dart';
-import 'package:steelpanel/models/confirmed-customers-model-create.dart';
 import 'package:steelpanel/screens/homescreen.dart';
 import 'package:steelpanel/screens/pages/customers_controller.dart';
 import 'package:steelpanel/api/req/delete-customer.dart';
@@ -21,7 +17,6 @@ import 'package:steelpanel/widgets/bottombutton.dart';
 import 'package:steelpanel/widgets/newuser_textfield.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:persian_tools/persian_tools.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 
 final CustomersController controller = Get.put(CustomersController());
 final String url = '${apiService.apiurl}/customers/readcustomer.php';

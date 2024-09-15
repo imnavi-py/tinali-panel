@@ -20,9 +20,6 @@ import 'package:steelpanel/models/read-order-model.dart';
 //   }
 // }
 
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-
 Future<List<SellOrder>> fetchOrders() async {
   final response =
       await http.get(Uri.parse('${apiService.apiurl}/orders/read-order.php'));

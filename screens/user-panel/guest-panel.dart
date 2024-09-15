@@ -237,7 +237,7 @@ class _GuestsPanelState extends State<GuestsPanel> {
       _deleteCookie('textfield_value=');
       Navigator.pushReplacement(context, MaterialPageRoute(
         builder: (context) {
-          return LoginPageSk();
+          return const LoginPageSk();
         },
       ));
     } else {

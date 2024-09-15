@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -8,7 +7,6 @@ import 'package:sidebarx/sidebarx.dart';
 import 'package:steelpanel/api/add-log.dart';
 import 'package:steelpanel/api/config.dart';
 import 'package:steelpanel/api/req/delete-customer.dart';
-import 'package:steelpanel/control/user-info.dart';
 import 'package:steelpanel/screens/pages/home.dart';
 
 Future<void> transferCustomers_wa(List<int> ids, int userid, context) async {

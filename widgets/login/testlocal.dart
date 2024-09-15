@@ -12,6 +12,7 @@ import 'package:steelpanel/control/user-info.dart';
 // import 'package:steelpanel/login/saveddata.dart';
 import 'package:steelpanel/screens/homescreen.dart';
 import 'package:steelpanel/screens/pages/home.dart';
+import 'package:steelpanel/widgets/login/phonecheck.dart';
 import 'package:steelpanel/widgets/login/register.dart';
 import 'package:steelpanel/widgets/mytextfield.dart';
 import 'package:universal_html/html.dart' as html;
@@ -139,7 +140,7 @@ class _LoginPageSkState extends State<LoginPageSk> {
       UserInfoControll.user_id.value = jsonDecode(response.body)['user_id'];
       UserInfoControll.userTypeId.value = userTypeId;
       print('user type ok!');
-      print('user type id = ${userTypeId}');
+      print('user type id = $userTypeId');
       print(UserInfoControll.user_id.value);
       UserInfoControll.userType.value = userType;
       print('user type ok!');
@@ -195,7 +196,7 @@ class _LoginPageSkState extends State<LoginPageSk> {
         print('yes');
         if (checkOrderId != 0 || checkOrderId != null) {
           final response = await http.get(Uri.parse(
-              'https://test.ht-hermes.com/orders/read-order.php?order_id=${checkOrderId}'));
+              'https://test.ht-hermes.com/orders/read-order.php?order_id=$checkOrderId'));
 
           if (response.statusCode == 200) {
             print('object');
@@ -359,7 +360,7 @@ class _LoginPageSkState extends State<LoginPageSk> {
           print('yes');
           if (checkOrderId != 0 || checkOrderId != null) {
             final response = await http.get(Uri.parse(
-                'https://test.ht-hermes.com/orders/read-order.php?order_id=${checkOrderId}'));
+                'https://test.ht-hermes.com/orders/read-order.php?order_id=$checkOrderId'));
 
             if (response.statusCode == 200) {
               print('object');
@@ -523,7 +524,7 @@ class _LoginPageSkState extends State<LoginPageSk> {
                                 borderRadius: BorderRadius.circular(10)),
                             child: TextButton(
                                 onPressed: () {
-                                  Get.to(const RegsiterPage());
+                                  Get.to(const PhoneCheck());
                                 },
                                 child: const Text(
                                   'ثبت نام',

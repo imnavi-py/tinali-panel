@@ -78,14 +78,14 @@ class _MyListTileWidgetState extends State<MyListTileWidget> {
                     ]),
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   flex: 5,
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 15.0),
+                    padding: EdgeInsets.only(left: 15.0),
                     child: SizedBox(
                       // color: Colors.red,
                       width: 100,
-                      child: const Text('test1'),
+                      child: Text('test1'),
                     ),
                   ),
                 ),

@@ -322,7 +322,7 @@ class _HomePageState extends State<HomePage> {
                                               Container(
                                                 child: ElevatedButton(
                                                     onPressed: () {
-                                                      Get.to(GradeList());
+                                                      Get.to(const GradeList());
                                                     },
                                                     child: const Text(
                                                         'مدیریت گرید ها')),
@@ -333,7 +333,7 @@ class _HomePageState extends State<HomePage> {
                                                 child: ElevatedButton(
                                                     onPressed: () {
                                                       Get.to(
-                                                          ConfirmedSuppliersPage());
+                                                          const ConfirmedSuppliersPage());
                                                     },
                                                     child: const Text(
                                                         'لیست تامین کنندگان')),
@@ -741,7 +741,7 @@ class _HomePageState extends State<HomePage> {
                                             // _buildPopupMenuItem('Copy'),
                                             _buildPopupMenuItem('خروج', () {
                                               _deleteCookie('textfield_value=');
-                                              Get.to(LoginPageSk());
+                                              Get.to(const LoginPageSk());
                                             }),
                                           ],
                                       child: Obx(() {
@@ -990,7 +990,7 @@ class _HomePageState extends State<HomePage> {
                                                 ),
                                                 MyCardWidget(
                                                   onpress: () {
-                                                    Get.to(LogsScreen());
+                                                    Get.to(const LogsScreen());
                                                   },
                                                   text: 'گزارشات',
                                                   image: Image.asset(
@@ -1001,7 +1001,7 @@ class _HomePageState extends State<HomePage> {
                                                 MyCardWidget(
                                                   onpress: () {
                                                     Get.to(
-                                                        ConfirmedSuppliersPage());
+                                                        const ConfirmedSuppliersPage());
                                                   },
                                                   text: 'تامیین کنندگان',
                                                   image: Image.asset(

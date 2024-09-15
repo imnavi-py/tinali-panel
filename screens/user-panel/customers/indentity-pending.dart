@@ -23,7 +23,7 @@ class _IndentityPendingState extends State<IndentityPending> {
   @override
   Widget build(BuildContext context) {
     print(UserInfoControll.first_name.value);
-    return Container(
+    return SizedBox(
       width: screenWidth,
       height: screenHeight,
       child: Column(

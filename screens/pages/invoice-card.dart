@@ -135,13 +135,13 @@ class _InvoiceCardState extends State<InvoiceCard> {
                         decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                   color: Colors.black,
                                   blurRadius: 2,
                                   spreadRadius: 1)
                             ]),
-                        child: Text(
+                        child: const Text(
                           ' تایید نشده ',
                           style: TextStyle(color: Colors.white),
                         ),
@@ -166,7 +166,7 @@ class _InvoiceCardState extends State<InvoiceCard> {
                       backgroundColor:
                           MaterialStatePropertyAll<Color>(Colors.green),
                     ),
-                    child: Text(
+                    child: const Text(
                       'تایید',
                       style: TextStyle(color: Colors.white),
                     ),
@@ -179,7 +179,7 @@ class _InvoiceCardState extends State<InvoiceCard> {
                       backgroundColor:
                           MaterialStatePropertyAll<Color>(Colors.blue),
                     ),
-                    child: Text(
+                    child: const Text(
                       'مشاهده',
                       style: TextStyle(color: Colors.white),
                     ),

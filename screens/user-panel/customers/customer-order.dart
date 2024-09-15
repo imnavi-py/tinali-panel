@@ -1,19 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'package:searchbar_animation/searchbar_animation.dart';
 import 'package:sidebarx/sidebarx.dart';
-import 'package:steelpanel/api/add-log.dart';
-import 'package:steelpanel/api/config.dart';
-import 'package:steelpanel/control/user-info.dart';
-import 'package:steelpanel/screens/factors.dart';
 import 'package:steelpanel/screens/homescreen.dart';
-import 'package:steelpanel/screens/pages/orders-data.dart';
-import 'package:steelpanel/screens/testfactor.dart';
-import 'package:steelpanel/widgets/add-order-buy.dart';
-import 'dart:convert';
-import 'package:dio/dio.dart';
-import 'package:steelpanel/widgets/add-order-sell.dart';
 
 class CustomerOrder extends StatefulWidget {
   final Function() refresh;

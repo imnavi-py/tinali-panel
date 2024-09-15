@@ -32,7 +32,7 @@ Future<void> transferCustomers(List<int> ids, int userid, context) async {
           middleText: 'به بخش تایید شده منتقل شد',
           middleTextStyle: const TextStyle(fontFamily: 'Irs', fontSize: 16),
           titleStyle: const TextStyle(fontFamily: 'Irs', fontSize: 20));
-      int data_to_get_usertypeId = responseData['new_ids'][0];
+      int dataToGetUsertypeid = responseData['new_ids'][0];
       print('in id confirmed_customers : ${responseData['new_ids'][0]}');
       deleteCustomers(ids);
       AddtoLogs('مشتریان', 'مشتری / مشتریان تایید شدند $ids');

@@ -1,11 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:steelpanel/api/config.dart';
 import 'package:http/http.dart' as http;
-import 'package:steelpanel/login/testlocal.dart';
 
 Future<void> userUpdate(String name, String lastname, int id) async {
   var url = Uri.parse('${apiService.apiurl}/users/update.php?id=$id');

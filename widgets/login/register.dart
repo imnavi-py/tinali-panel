@@ -115,11 +115,11 @@ class _RegsiterPageState extends State<RegsiterPage> {
                           ),
                         ),
                       ),
-                      Expanded(
+                      const Expanded(
                         flex: 2,
                         child: SizedBox(
                           width: 50,
-                          child: const Text(''),
+                          child: Text(''),
                         ),
                       )
                     ],

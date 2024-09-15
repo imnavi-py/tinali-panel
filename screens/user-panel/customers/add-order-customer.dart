@@ -138,10 +138,10 @@ class _OrdersCustomersState extends State<OrdersCustomers> {
   void _submitedOrder() {
     MotionToast(
       icon: Icons.check,
-      primaryColor: Colors.green.shade900!,
+      primaryColor: Colors.green.shade900,
       secondaryColor: Colors.grey,
-      title: Text('موفقیت'),
-      description: Text('سفارش با موفقیت ثبت شد'),
+      title: const Text('موفقیت'),
+      description: const Text('سفارش با موفقیت ثبت شد'),
       position: MotionToastPosition.top,
       animationType: AnimationType.fromTop,
       height: 100,
@@ -161,7 +161,7 @@ class _OrdersCustomersState extends State<OrdersCustomers> {
             'size': selectedSize['size'].toString(),
             // 'order_date': DateTime.now().toIso8601String(),
             // 'fee': feeController.text,
-            'weight': weightController.text + '' + howmuch.text,
+            'weight': '${weightController.text}${howmuch.text}',
             // 'branch': selectedQuantity.toString(),
             // 'thickness': thicknessController.text,
             // 'width': widthController.text,
@@ -445,7 +445,7 @@ class _OrdersCustomersState extends State<OrdersCustomers> {
         backgroundColor: const Color(0xFF2E2E48),
       ),
       body: loading == true
-          ? Center(
+          ? const Center(
               child: SizedBox(
                 // height: 100,
                 child: CircularProgressIndicator(),

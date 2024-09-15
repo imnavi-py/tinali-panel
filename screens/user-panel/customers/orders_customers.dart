@@ -9,6 +9,8 @@ import 'package:timeline_tile/timeline_tile.dart';
 import 'package:http/http.dart' as http;
 
 class OrderTrackingPage extends StatefulWidget {
+  const OrderTrackingPage({super.key});
+
   @override
   _OrderTrackingPageState createState() => _OrderTrackingPageState();
 }
@@ -253,7 +255,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage>
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(15),
-                                                          boxShadow: [
+                                                          boxShadow: const [
                                                             BoxShadow(
                                                               color:
                                                                   Colors.black,
@@ -285,7 +287,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage>
                               if (UserInfoControll.status.value >
                                   0) // Using an if statement for conditional rendering
                                 if (!invoiceLoaded)
-                                  SizedBox(
+                                  const SizedBox(
                                     child: CircularProgressIndicator(),
                                   )
                                 else
@@ -304,7 +306,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage>
                                                 horizontal: 20, vertical: 10),
                                             child: Row(
                                               children: [
-                                                Text('شماره سفارش: '),
+                                                const Text('شماره سفارش: '),
                                                 Text(invoices[index]
                                                     .invoiceNumber),
                                                 Expanded(
@@ -337,7 +339,7 @@ class _OrderTrackingPageState extends State<OrderTrackingPage>
                                                       itemBuilder:
                                                           (context, index) {
                                                         return Center(
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: MediaQuery.of(
                                                                         context)
                                                                     .size

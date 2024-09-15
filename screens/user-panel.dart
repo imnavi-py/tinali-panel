@@ -244,7 +244,7 @@ class _UserPanelState extends State<UserPanel> {
           // ),
           MyCardWidget(
             onpress: () {
-              Get.to(LogsScreen());
+              Get.to(const LogsScreen());
             },
             text: 'کاتالوگ',
             image: Image.asset(

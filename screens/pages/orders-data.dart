@@ -130,7 +130,7 @@ class _OrderCardState extends State<OrderCard> {
                       Color.fromARGB(255, 141, 245, 145),
                     ),
                   ),
-                  child: Text('تایید'),
+                  child: const Text('تایید'),
                 ),
                 ElevatedButton(
                   onPressed: () {},
@@ -138,7 +138,7 @@ class _OrderCardState extends State<OrderCard> {
                     backgroundColor:
                         MaterialStatePropertyAll<Color>(Colors.red),
                   ),
-                  child: Text('رد'),
+                  child: const Text('رد'),
                 ),
               ],
             ),

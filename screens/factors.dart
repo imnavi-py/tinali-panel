@@ -583,7 +583,7 @@ class _InvoicesPageState extends State<InvoicesPage>
                                         ),
                                         InkWell(
                                           onTap: () {
-                                            Get.to(PrintableFactor());
+                                            Get.to(const PrintableFactor());
                                           },
                                           child: Container(
                                             height: 25,
@@ -689,9 +689,9 @@ class _InvoicesPageState extends State<InvoicesPage>
                     color: Colors.blue.shade900,
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Text(
+                  child: const Text(
                     '2',
-                    style: const TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
               ],

@@ -21,7 +21,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   Get.put(DialogFuncs());
-  runApp(MyApp());
+  runApp(const MyApp());
   configLoading();
 }
 
@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
           // PrintableFactor()
           // HomePage()
           // InvoicesPage(refresh: refresh)
-          LoginPageSk(),
+          const LoginPageSk(),
       // home: FutureBuilder<String>(
       //   future: _checkTableStatus(),
       //   builder: (context, snapshot) {
