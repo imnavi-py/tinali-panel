@@ -288,6 +288,7 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
       print("Verification code entered: $verificationCode");
       print(codesms == verificationCode);
       if (codesms == verificationCode) {
+        RegsiterPage.numberReg = VerifyCodePage.numberSms;
         Get.to(RegsiterPage());
       }
       // Your verification logic here

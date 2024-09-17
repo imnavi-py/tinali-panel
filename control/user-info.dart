@@ -19,4 +19,6 @@ class UserInfoControll extends GetxController {
   static var orderId = ''.obs;
   static var status = 0.obs;
   static var items = [].obs;
+  // number After SMS verified
+  static var numbersms = ''.obs;
 }

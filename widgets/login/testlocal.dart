@@ -194,7 +194,7 @@ class _LoginPageSkState extends State<LoginPageSk> {
       checkOrderId.toString();
       if (userType == 'confirmed_customers') {
         print('yes');
-        if (checkOrderId != 0 || checkOrderId != null) {
+        if (checkOrderId != 0) {
           final response = await http.get(Uri.parse(
               'https://test.ht-hermes.com/orders/read-order.php?order_id=$checkOrderId'));
 
@@ -358,7 +358,7 @@ class _LoginPageSkState extends State<LoginPageSk> {
         checkOrderId.toString();
         if (response0['userType'] == 'confirmed_customers') {
           print('yes');
-          if (checkOrderId != 0 || checkOrderId != null) {
+          if (checkOrderId != 0) {
             final response = await http.get(Uri.parse(
                 'https://test.ht-hermes.com/orders/read-order.php?order_id=$checkOrderId'));
 

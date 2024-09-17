@@ -12,6 +12,7 @@ import 'package:universal_html/html.dart' as html;
 
 class RegsiterPage extends StatefulWidget {
   const RegsiterPage({super.key});
+  static String numberReg = '';
 
   @override
   State<RegsiterPage> createState() => _RegsiterPageState();
@@ -61,6 +62,7 @@ class _RegsiterPageState extends State<RegsiterPage> {
   final formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    mobile.text = RegsiterPage.numberReg;
     return Scaffold(
       backgroundColor: const Color.fromARGB(251, 1, 1, 34),
 
@@ -185,6 +187,7 @@ class _RegsiterPageState extends State<RegsiterPage> {
                       height: 40,
                       width: 300,
                       child: myTextField(
+                          readonly: true,
                           prefixicon: const Icon(Icons.phone_android_rounded),
                           controller: mobile,
                           hintText: 'موبایل',

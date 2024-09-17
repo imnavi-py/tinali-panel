@@ -190,6 +190,7 @@ class _PhoneCheckState extends State<PhoneCheck> {
                             if (_formKey.currentState!.validate()) {
                               // await _Register();
                               VerifyCodePage.numberSms = mobile.text;
+
                               Get.to(VerifyCodePage());
                             }
                           },

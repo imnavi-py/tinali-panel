@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 
 class myTextField extends StatelessWidget {
-  myTextField({
-    super.key,
-    required this.controller,
-    required this.hintText,
-    required this.type,
-    required this.errorText,
-    required this.prefixicon,
-    this.onchanged,
-  });
+  myTextField(
+      {super.key,
+      required this.controller,
+      required this.hintText,
+      required this.type,
+      required this.errorText,
+      required this.prefixicon,
+      this.onchanged,
+      this.readonly = false});
   final TextEditingController controller;
   final String hintText;
   final TextInputType type;
   final String errorText;
   final Icon prefixicon;
+  final bool readonly;
   Function(String)? onchanged;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: readonly,
       controller: controller,
       validator: (value) {
         if (value == null || value.isEmpty) {
